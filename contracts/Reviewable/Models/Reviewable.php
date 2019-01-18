@@ -69,7 +69,7 @@ interface Reviewable
      * @throws \Gox\Contracts\Reviewable\Reviewer\Exceptions\InvalidReviewer
      * @throws \Gox\Contracts\Reviewable\Review\Exceptions\InvalidReviewStar
      */
-    public function reviewBy($star = 0, $comment = null, $userId = null);
+    public function reviewBy($star, $comment = null, $userId = null);
 
 
 
