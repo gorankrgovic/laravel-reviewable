@@ -114,7 +114,7 @@ class ReviewableService implements ReviewableServiceContract
         }
 
         $counter->decrement('count');
-        $counter->refresh();
+        //$counter->refresh();
 
         $average = app(ReviewContract::class)
             ->where('reviewable_type', $counter->reviewable_type)
@@ -137,7 +137,7 @@ class ReviewableService implements ReviewableServiceContract
             ]);
         }
         $counter->increment('count');
-        $counter->refresh();
+        //$counter->refresh();
 
         $average = app(ReviewContract::class)
             ->where('reviewable_type', $counter->reviewable_type)
