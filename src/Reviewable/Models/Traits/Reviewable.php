@@ -93,7 +93,7 @@ trait Reviewable
      */
     public function reviewBy($star, $comment = null, $userId = null)
     {
-        app(ReviewableServiceContract::class)->addLikeTo($this, $star, $comment, $userId);
+        app(ReviewableServiceContract::class)->addReviewTo($this, $star, $comment, $userId);
     }
 
 
