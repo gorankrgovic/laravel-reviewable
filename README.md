@@ -1,4 +1,4 @@
-# Laravel Revieable (5 Star rating and review)
+# Laravel Reviewable (5 Star rating and review)
 
 ## Introduction
 
