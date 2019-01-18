@@ -114,13 +114,11 @@ class ReviewableService implements ReviewableServiceContract
         }
 
         $counter->decrement('count');
+        $counter->refresh();
 
         $average = app(ReviewContract::class)
-            ->avg([
-                'star',
-            ])
             ->where('reviewable_type', $counter->reviewable_type)
-            ->where('reviewable_id', $counter->reviewable_id);
+            ->where('reviewable_id', $counter->reviewable_id)->get()->avg('star');
 
         $counter->avg_rating = $average;
         $counter->save();
@@ -139,13 +137,11 @@ class ReviewableService implements ReviewableServiceContract
             ]);
         }
         $counter->increment('count');
+        $counter->refresh();
 
         $average = app(ReviewContract::class)
-            ->avg([
-                'star',
-            ])
             ->where('reviewable_type', $counter->reviewable_type)
-            ->where('reviewable_id', $counter->reviewable_id);
+            ->where('reviewable_id', $counter->reviewable_id)->get()->avg('star');
 
         $counter->avg_rating = $average;
         $counter->save();
