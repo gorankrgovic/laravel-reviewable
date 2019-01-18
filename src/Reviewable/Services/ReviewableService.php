@@ -265,12 +265,38 @@ class ReviewableService implements ReviewableServiceContract
      */
     public function getReviewStar($star)
     {
+        switch ( (int) $star )
+        {
+            case 1:
+                $cst = 'RATE_POOR';
+                break;
 
-        if (!defined("\\Gox\\Laravel\\Reviewable\\Review\\Enums\\ReviewStar::{$star}")) {
+            case 2:
+                $cst = 'RATE_BAD';
+                break;
+
+            case 3:
+                $cst = 'RATE_OK';
+                break;
+
+            case 4:
+                $cst = 'RATE_GOOD';
+                break;
+
+            case 5:
+                $cst = 'RATE_GREAT';
+                break;
+
+            default:
+                $cst = 'RATE_OK';
+                break;
+        }
+
+        if (!defined("\\Gox\\Laravel\\Reviewable\\Review\\Enums\\ReviewStar::{$cst}")) {
             throw InvalidReviewStar::notExists($star);
         }
 
-        return constant("\\Gox\\Laravel\\Reviewable\\Review\\Enums\\ReviewStar::{$star}");
+        return constant("\\Gox\\Laravel\\Reviewable\\Review\\Enums\\ReviewStar::{$cst}");
     }
 
 }
